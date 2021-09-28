@@ -16,7 +16,7 @@ const usersSchema = new mongoose.Schema({
    
     street: {type: String, required: false, default: ''},
     city: {type: String, required: false, default: ''},
-    zipcode: {type: Number, required: false, default: 0},
+    zipcode: {type: String, required: false, default: 0},
     todos: [{type: todoSchema, required: false}],
     posts: [{type: postSchema, required: false}]
 })

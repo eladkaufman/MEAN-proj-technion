@@ -1,10 +1,7 @@
 const users = require('./usersModel');
 
-// Basic CRUD Operations
-
 // GET All
 exports.getAllUsers = () => {
-    console.log("users is ", typeof(users))
     return new Promise((resolve, reject) => {
         users.find({}, (err, res) => {
             (err) ? reject(err) : resolve(res)
