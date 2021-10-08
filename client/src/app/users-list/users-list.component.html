@@ -1,0 +1,8 @@
+
+<div class="search-line">
+    <input type="text" placeholder="Search" [(ngModel)]= "searchKey">
+
+</div>
+<div *ngFor="let user of users" >
+    <app-user [userData]="user" *ngIf="checkFiltered(user)" (notify)= userDeleted($event)></app-user> 
+</div>

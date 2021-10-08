@@ -1,0 +1,25 @@
+.main-container{
+
+    padding: 15px;
+    margin: 15px;
+    border-radius: 10px;
+}
+.green-border{
+    border: 3px solid green;
+}
+.red-border{
+    border: 3px solid red;
+}
+
+.address{
+    border: 3px solid purple;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: rgb(180, 176, 176);
+}
+.button{
+    background-color: sandybrown;
+    float: right;
+    margin-left: 5px;
+}

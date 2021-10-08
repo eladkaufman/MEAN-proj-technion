@@ -1,0 +1,28 @@
+
+<div [class]="areAllTodosCompleted()? 'main-container green-border': 'main-container red-border'">    
+    <form #f = "ngForm" (ngSubmit)="onSubmit()">
+    <label #id for="id">ID: {{userData._id}}</label>
+    <br><br>
+    <label for="name">Name: </label>
+    <input type="text" [(ngModel)]= "userData.name" name="name" required>
+    <br>
+    <label for="email">Email: </label>
+    <input type="text" [(ngModel)]= "userData.email" name="email" required>
+    <br>
+    
+    <input type="button" value="Other Data" (mouseover)= "otherDataOn = true" (click)= "otherDataOn = false">
+    <div class="address" *ngIf="otherDataOn">
+        <label for="street">Street: </label>
+        <input type="text" [(ngModel)]= "userData.street" name="street">
+        <br>
+        <label for="city">City: </label>
+        <input type="text" [(ngModel)]= "userData.city" name="city">
+        <br>
+        <label for="zipcode">zipcode: </label>
+        <input type="text" [(ngModel)]= "userData.zipcode" name="zipcode">
+        <br>
+    </div>
+    <input class="button" type="button" value="Delete" (click)= "delete()">
+    <input class="button" type="submit" value="Update" [disabled]="!f.form.valid">
+</form>
+</div>    

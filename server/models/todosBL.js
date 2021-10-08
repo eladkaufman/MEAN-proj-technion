@@ -1,5 +1,15 @@
 const users = require('./usersModel');
 
+exports.getTodos = (userId) => {
+    return new Promise((resolve, reject) => {
+        users.findById(userId, (err, res) => {
+            if(err) {reject(err)} else {
+                resolve(res.todos)
+            }
+        })
+    })
+}
+
 exports.postTodo = (userId ,newTodo) => {
     return new Promise((resolve, reject) => {
         users.findById(userId, (err, res) => {
