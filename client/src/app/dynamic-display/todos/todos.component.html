@@ -1,8 +1,17 @@
 <div>
-    TODO for user:
-    <div *ngFor= "let todo of todos">
-        <ul>
-            <li>{{todo.title}}</li>
+    Todos-User {{userId}}:
+    <input class= "button" type="button" value="Add">
+    <div class="todos-container" >
+        <ul class="todo" *ngFor= "let todo of todos">
+            <li>Title: {{todo.title}}</li>
+            <li>Completed: {{todo.completed}} 
+                <input 
+                class="button" 
+                type="button" 
+                value="Mark Completed" 
+                *ngIf="!todo.completed" 
+                (click)= "markComplete(todo._id)">
+            </li>
         </ul>
     </div> 
 

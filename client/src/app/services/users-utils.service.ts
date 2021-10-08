@@ -35,6 +35,9 @@ export class UsersUtilsService {
   getUserPosts(userId:string){
     return this.http.get<Post[]>(this.postsUrl + userId)
   }
+  markComplete(todoId:string){
+    return this.http.put<any>(this.todosUrl + todoId, "")
+  }
   ngOnDestroy(){
     this.sub1.unsubscribe()
   }

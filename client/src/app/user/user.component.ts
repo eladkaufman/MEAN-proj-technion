@@ -31,7 +31,9 @@ export class UserComponent implements OnInit {
     }
     return true
   }
-
+  navToUser(){
+    this.router.navigate([`/user/${this.userData._id}`])
+  }
   onSubmit(){
     this.sub = this.srv.updateUser(this.userData._id as string, this.userData)
     .subscribe(res =>{alert(res)})

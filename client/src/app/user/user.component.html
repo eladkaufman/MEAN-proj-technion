@@ -1,7 +1,7 @@
 
 <div [class]="areAllTodosCompleted()? 'main-container green-border': 'main-container red-border'">    
     <form #f = "ngForm" (ngSubmit)="onSubmit()">
-    <label #id for="id">ID: {{userData._id}}</label>
+    <label #id for="id" (click)= "navToUser()">ID: {{userData._id}}</label>
     <br><br>
     <label for="name">Name: </label>
     <input type="text" [(ngModel)]= "userData.name" name="name" required>

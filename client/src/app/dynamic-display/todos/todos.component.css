@@ -1,0 +1,23 @@
+.button{
+    background-color: sandybrown;
+    float: right;
+    margin-left: 5px;
+}
+
+.todos-container{
+    border: 3px solid black;
+    padding: 15px;
+    margin: 15px;
+}
+
+.todo{
+    border: 3px solid purple;
+    padding: 5px;
+    margin: 10px;
+}
+
+ul{
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+  }

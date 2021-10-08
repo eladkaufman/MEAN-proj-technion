@@ -11,10 +11,18 @@ import { UsersUtilsService } from '../../services/users-utils.service';
 })
 export class TodosComponent implements OnInit {
   sub:Subscription = new Subscription();
+  sub2:Subscription = new Subscription();
   todos: Todo[] = []
   userId: string = ""
   constructor(private ar : ActivatedRoute, private srv: UsersUtilsService) { }
 
+  markComplete(todoId:string){
+    this.sub2 = this.srv.markComplete(todoId).subscribe(data => {
+      console.log(data)
+    })
+    console.log(todoId)
+
+  }
   ngOnInit(): void {
     this.ar.params.subscribe(data => 
       {
@@ -27,6 +35,7 @@ export class TodosComponent implements OnInit {
   }
   ngOnDestroy(): void {
     this.sub.unsubscribe()
+    this.sub2.unsubscribe()
   }
 
 }
