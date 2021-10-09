@@ -1,8 +1,10 @@
 <div>
-    POST for user:
-    <div *ngFor= "let post of posts">
-        <ul>
-            <li>{{post.title}}</li>
+    Posts-User {{userId}}:
+    <input class= "button" type="button" value="Add">
+    <div class="posts-container" >
+        <ul class="post" *ngFor= "let post of posts">
+            <li>Title: {{post.title}}</li>
+            <li>Body: {{post.body}}</li>
         </ul>
     </div> 
 

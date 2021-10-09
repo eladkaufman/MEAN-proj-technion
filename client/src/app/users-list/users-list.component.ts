@@ -26,7 +26,6 @@ export class UsersListComponent implements OnInit {
   }
   ngOnInit(): void {
     this.sub = this.srv.getAllUsers().subscribe((data:User[])=>{this.users = data
-    console.table(this.users)
     })
   }
   ngOnDestroy(): void {

@@ -17,10 +17,9 @@ export class TodosComponent implements OnInit {
   constructor(private ar : ActivatedRoute, private srv: UsersUtilsService) { }
 
   markComplete(todoId:string){
-    this.sub2 = this.srv.markComplete(todoId).subscribe(data => {
-      console.log(data)
-    })
-    console.log(todoId)
+    const completedTodo:any = this.todos.find(x=>x._id == todoId)
+    this.todos[this.todos.indexOf(completedTodo)].completed = true;
+    this.sub2 = this.srv.markComplete(todoId).subscribe(data => {})
 
   }
   ngOnInit(): void {
