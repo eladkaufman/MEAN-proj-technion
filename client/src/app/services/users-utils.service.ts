@@ -38,6 +38,12 @@ export class UsersUtilsService {
   markComplete(todoId:string){
     return this.http.put<any>(this.todosUrl + todoId, "")
   }
+  addTodo(userId:string, todoObj:any){
+    return this.http.post<any>(this.todosUrl + userId, todoObj)
+  }
+  addPost(userId:string, postObj:any){
+    return this.http.post<any>(this.postsUrl + userId, postObj)
+  }
   ngOnDestroy(){
     this.sub1.unsubscribe()
   }

@@ -12,8 +12,11 @@ import { UsersUtilsService } from '../../services/users-utils.service';
 export class TodosComponent implements OnInit {
   sub:Subscription = new Subscription();
   sub2:Subscription = new Subscription();
+  sub3:Subscription = new Subscription();
   todos: Todo[] = []
   userId: string = ""
+  newTitle:string = ""
+  addingTodo: boolean = false
   constructor(private ar : ActivatedRoute, private srv: UsersUtilsService) { }
 
   markComplete(todoId:string){
@@ -22,6 +25,19 @@ export class TodosComponent implements OnInit {
     this.sub2 = this.srv.markComplete(todoId).subscribe(data => {})
 
   }
+  onSubmit(){
+ 
+    this.sub3 = this.srv.addTodo(this.userId, {title: this.newTitle, completed: false}).subscribe(data=> 
+      {console.log(data)
+        
+        this.sub = this.srv.getUserTodos(this.userId).subscribe(data =>{
+          this.todos = data
+        })
+      
+      })
+    this.addingTodo = false;
+  }
+
   ngOnInit(): void {
     this.ar.params.subscribe(data => 
       {
@@ -31,10 +47,12 @@ export class TodosComponent implements OnInit {
           this.todos = data
         })
       })
+      console.log(this.newTitle)
   }
   ngOnDestroy(): void {
     this.sub.unsubscribe()
     this.sub2.unsubscribe()
+    this.sub3.unsubscribe()
   }
 
 }

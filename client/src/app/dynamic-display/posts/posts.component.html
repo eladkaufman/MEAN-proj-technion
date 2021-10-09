@@ -1,11 +1,30 @@
-<div>
+<div  *ngIf = "!addingPost">
     Posts-User {{userId}}:
-    <input class= "button" type="button" value="Add">
+    <input class= "button" type="button" value="Add" (click) = "addingPost = true">
     <div class="posts-container" >
         <ul class="post" *ngFor= "let post of posts">
             <li>Title: {{post.title}}</li>
             <li>Body: {{post.body}}</li>
         </ul>
     </div> 
+
+</div>
+
+<div *ngIf = "addingPost">
+
+    New Post-User {{userId}}:
+    <div class="posts-container">    
+        <form #f = "ngForm" (ngSubmit)="onSubmit()">
+    
+            <label for="title">Title: </label>
+            <input type="text" name="title"  [(ngModel)]="newTitle" required>
+            <br>
+            <label for="body">Body: </label>
+            <input type="text" name="body"  [(ngModel)]="newBody" required>
+            <br>
+            <input class="button" type="submit" value="Add" [disabled]="!f.form.valid">
+            <input class="button" type="button" value="Cancel" (click) = "addingPost = false">
+        </form>
+    </div>
 
 </div>

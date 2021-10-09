@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { TodosComponent } from './dynamic-display/todos/todos.component';
-import { PostsComponent } from './dynamic-display/posts/posts.component'
+import { PostsComponent } from './dynamic-display/posts/posts.component';
 
 const routes: Routes = [{path: "user/:id", component: DynamicDisplayComponent}];
 @NgModule({
@@ -20,6 +20,7 @@ const routes: Routes = [{path: "user/:id", component: DynamicDisplayComponent}];
     UserComponent,
     TodosComponent,
     PostsComponent,
+
 
   ],
   imports: [

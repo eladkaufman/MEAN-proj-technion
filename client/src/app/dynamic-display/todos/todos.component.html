@@ -1,6 +1,6 @@
-<div>
+<div *ngIf = "!addingTodo">
     Todos-User {{userId}}:
-    <input class= "button" type="button" value="Add">
+    <input class= "button" type="button" value="Add" (click) = "addingTodo = true">
     <div class="todos-container" >
         <ul class="todo" *ngFor= "let todo of todos">
             <!-- <li>todoId: {{todo._id}}</li> -->
@@ -15,5 +15,21 @@
             </li>
         </ul>
     </div> 
+
+</div>
+
+<div *ngIf = "addingTodo">
+
+    New Todo-User {{userId}}:
+    <div class="todos-container">    
+        <form #f = "ngForm" (ngSubmit)="onSubmit()">
+    
+            <label for="title">Title: </label>
+            <input type="text" name="title"  [(ngModel)]="newTitle" required>
+            <br>
+            <input class="button" type="submit" value="Add" [disabled]="!f.form.valid">
+            <input class="button" type="button" value="Cancel" (click) = "addingTodo = false">
+        </form>
+    </div>
 
 </div>
