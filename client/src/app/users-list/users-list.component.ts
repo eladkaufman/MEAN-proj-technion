@@ -14,13 +14,16 @@ export class UsersListComponent implements OnInit {
   users: User[] = []
   sub: Subscription = new Subscription()
   sub2: Subscription = new Subscription()
+
   searchKey: string = "";
+
   constructor(private srv: UsersUtilsService, private router: Router, private msg: MessageService) { 
     this.sub2 = this.msg.getUpdate().subscribe(x =>{
       if(x == true){
         this.sub = this.srv.getAllUsers().subscribe((data:User[])=>{this.users = data})
       }
     })
+
   }
   navToAddUser(){
     this.router.navigate([`/add-user`])

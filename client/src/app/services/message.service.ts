@@ -6,7 +6,15 @@ import { Observable, Subject } from 'rxjs';
 })
 export class MessageService {
   private subject = new Subject<boolean>()
+  private selectedSubject = new Subject<string>()
 
+
+  sendSelectedId(userId: string) {
+    this.selectedSubject.next(userId);
+}
+  getSelectedId(): Observable<any> {
+    return this.selectedSubject.asObservable();
+  }
   updateList(toUpdate: boolean) {
     this.subject.next(toUpdate);
 }

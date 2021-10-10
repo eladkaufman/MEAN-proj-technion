@@ -23,7 +23,7 @@ export class PostsComponent implements OnInit {
   onSubmit(){
  
     this.sub2 = this.srv.addPost(this.userId, {title: this.newTitle, body: this.newBody}).subscribe(data=> 
-      {console.log(data)
+      {
         this.sub = this.srv.getUserPosts(this.userId).subscribe(data =>{
           this.posts = data
         })

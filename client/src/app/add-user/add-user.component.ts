@@ -19,11 +19,10 @@ export class AddUserComponent implements OnInit {
   onSubmit(){
     this.sub = this.srv.addUser({name: this.userName, email: this.userEmail})
     .subscribe(data =>{
-      console.log(data)
+
       this.msg.updateList(true);
       this.router.navigate([`/`])
     })
-    console.log("added user")
   }
   navToMain(){
     this.router.navigate([`/`])

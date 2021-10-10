@@ -1,5 +1,5 @@
 
-<div [class]="areAllTodosCompleted()? 'main-container green-border': 'main-container red-border'">    
+<div [style.background-color] = "(userData._id === selectedId)? 'orange': 'transparent' "  [class]="areAllTodosCompleted()? 'main-container green-border': 'main-container red-border'">    
     <form #f = "ngForm" (ngSubmit)="onSubmit()">
     <label #id for="id" (click)= "navToUser()">ID: {{userData._id}}</label>
     <br><br>

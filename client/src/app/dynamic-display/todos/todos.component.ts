@@ -31,7 +31,7 @@ export class TodosComponent implements OnInit {
   onSubmit(){
  
     this.sub3 = this.srv.addTodo(this.userId, {title: this.newTitle, completed: false}).subscribe(data=> 
-      {console.log(data)
+      {
         
         this.sub = this.srv.getUserTodos(this.userId).subscribe(data =>{
           this.todos = data

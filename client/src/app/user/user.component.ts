@@ -5,6 +5,7 @@ import { UsersUtilsService } from '../services/users-utils.service';
 import { Todo } from '../todo';
 import { User } from '../user';
 import { EventEmitter, Output } from '@angular/core';
+import { MessageService } from '../services/message.service';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -14,13 +15,20 @@ export class UserComponent implements OnInit {
   @Input()
   userData:User = {name: "", email: ""}
 
+  selectedId:string = ""
+
   @Output()
   notify: EventEmitter<string> = new EventEmitter<string>()
 
   otherDataOn:boolean = false
   sub: Subscription = new Subscription()
   sub2: Subscription = new Subscription()
-  constructor(private srv: UsersUtilsService, private router: Router) { }
+  sub3: Subscription = new Subscription()
+  constructor(private srv: UsersUtilsService, private router: Router, private msg: MessageService) {
+    this.sub3 = this.msg.getSelectedId().subscribe(data =>{
+      this.selectedId = data
+    })
+   }
  
   areAllTodosCompleted(): boolean{
     if (this.userData.todos){
@@ -33,6 +41,7 @@ export class UserComponent implements OnInit {
     return true
   }
   navToUser(){
+    this.msg.sendSelectedId(this.userData._id as string)
     this.router.navigate([`/user/${this.userData._id}`])
   }
   onSubmit(){
