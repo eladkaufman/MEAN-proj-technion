@@ -10,8 +10,13 @@ import { RouterModule, Routes } from '@angular/router';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { TodosComponent } from './dynamic-display/todos/todos.component';
 import { PostsComponent } from './dynamic-display/posts/posts.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
-const routes: Routes = [{path: "user/:id", component: DynamicDisplayComponent}];
+const routes: Routes = [
+                          {path: "user/:id", component: DynamicDisplayComponent},
+                          {path: "add-user", component: AddUserComponent},
+
+                        ];
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +25,7 @@ const routes: Routes = [{path: "user/:id", component: DynamicDisplayComponent}];
     UserComponent,
     TodosComponent,
     PostsComponent,
+    AddUserComponent,
 
 
   ],

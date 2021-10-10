@@ -6,6 +6,7 @@ import { Post } from '../post';
 import { Todo } from '../todo';
 import { User } from '../user';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +15,9 @@ export class UsersUtilsService {
   todosUrl: string = "http://localhost:8000/api/todos/"
   postsUrl: string = "http://localhost:8000/api/posts/"
   sub1:Subscription = new Subscription();
-  constructor(private http: HttpClient, private ar: ActivatedRoute) { }
+  
+  constructor(private http: HttpClient, private ar: ActivatedRoute){}
+  
   getAllUsers(){
     return this.http.get<User[]>(this.usersUrl)
   }
@@ -44,6 +47,10 @@ export class UsersUtilsService {
   addPost(userId:string, postObj:any){
     return this.http.post<any>(this.postsUrl + userId, postObj)
   }
+  addUser(userObj:any){
+    return this.http.post<any>(this.usersUrl, userObj)
+  }
+
   ngOnDestroy(){
     this.sub1.unsubscribe()
   }

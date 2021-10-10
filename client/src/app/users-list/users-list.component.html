@@ -1,6 +1,7 @@
 
 <div class="search-line">
     <input type="text" placeholder="Search" [(ngModel)]= "searchKey">
+    <input class= "button" type="button" value="Add" (click)= "navToAddUser()">
 
 </div>
 <div *ngFor="let user of users" >
