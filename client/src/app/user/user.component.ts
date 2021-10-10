@@ -24,6 +24,7 @@ export class UserComponent implements OnInit {
  
   areAllTodosCompleted(): boolean{
     if (this.userData.todos){
+      if(this.userData.todos.length === 0) return false
       for (const todo of this.userData.todos){
         if (!todo.completed) return false;
       }

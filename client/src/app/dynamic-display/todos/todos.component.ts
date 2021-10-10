@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { MessageService } from 'src/app/services/message.service';
 import { Todo } from 'src/app/todo';
 import { UsersUtilsService } from '../../services/users-utils.service';
 
@@ -17,12 +18,14 @@ export class TodosComponent implements OnInit {
   userId: string = ""
   newTitle:string = ""
   addingTodo: boolean = false
-  constructor(private ar : ActivatedRoute, private srv: UsersUtilsService) { }
+  constructor(private ar : ActivatedRoute, private srv: UsersUtilsService, private msg: MessageService) { }
 
   markComplete(todoId:string){
     const completedTodo:any = this.todos.find(x=>x._id == todoId)
     this.todos[this.todos.indexOf(completedTodo)].completed = true;
-    this.sub2 = this.srv.markComplete(todoId).subscribe(data => {})
+    this.sub2 = this.srv.markComplete(todoId).subscribe(data => {
+      this.msg.updateList(true)
+    })
 
   }
   onSubmit(){
