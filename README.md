@@ -1,4 +1,4 @@
-# Users - A MEAN application :smiling_imp:
+# Users - A MEAN Application :smiling_imp:
 
 Users is a web application for managing  users information.  
 A User has its personal information (name, email, address), a todo list and posts list.  
